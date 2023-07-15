@@ -56,11 +56,14 @@
 		17EFBE022A62F6A70065A476 /* RestartApp */ = {
 			isa = PBXGroup;
 			children = (
-				17EFBE1C2A62F8AB0065A476 /* Sounds */,
-				17EFBE142A62F6E90065A476 /* App */,
-				17EFBE072A62F6A80065A476 /* Assets.xcassets */,
 				17EFBE092A62F6A80065A476 /* RestartApp.entitlements */,
+				17EFBE032A62F6A70065A476 /* RestartAppApp.swift */,
+				17EFBE072A62F6A80065A476 /* Assets.xcassets */,
 				17EFBE0A2A62F6A80065A476 /* Preview Content */,
+				17EFBE142A62F6E90065A476 /* Screens */,
+				17EFBE1C2A62F8AB0065A476 /* Sounds */,
+				17EFBE232A62FD230065A476 /* Utilities */,
+				17EFBE222A62FC840065A476 /* Views */,
 			);
 			path = RestartApp;
 			sourceTree = "<group>";
@@ -73,13 +76,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		17EFBE142A62F6E90065A476 /* App */ = {
+		17EFBE142A62F6E90065A476 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				17EFBE032A62F6A70065A476 /* RestartAppApp.swift */,
 				17EFBE052A62F6A70065A476 /* ContentView.swift */,
 			);
-			path = App;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		17EFBE1C2A62F8AB0065A476 /* Sounds */ = {
@@ -89,6 +91,20 @@
 				17EFBE1E2A62F8AB0065A476 /* success.m4a */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		17EFBE222A62FC840065A476 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		17EFBE232A62FD230065A476 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
