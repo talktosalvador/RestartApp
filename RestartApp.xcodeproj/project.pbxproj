@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17DB16FE2A64C36000397095 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DB16FD2A64C36000397095 /* OnboardingView.swift */; };
+		17DB17002A64C36C00397095 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DB16FF2A64C36C00397095 /* HomeView.swift */; };
 		17EFBE042A62F6A70065A476 /* RestartAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EFBE032A62F6A70065A476 /* RestartAppApp.swift */; };
 		17EFBE062A62F6A70065A476 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EFBE052A62F6A70065A476 /* ContentView.swift */; };
 		17EFBE082A62F6A80065A476 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17EFBE072A62F6A80065A476 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		17DB16FC2A64C0D200397095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		17DB16FD2A64C36000397095 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		17DB16FF2A64C36C00397095 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		17EFBE002A62F6A70065A476 /* RestartApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestartApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EFBE032A62F6A70065A476 /* RestartAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartAppApp.swift; sourceTree = "<group>"; };
 		17EFBE052A62F6A70065A476 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				17EFBE052A62F6A70065A476 /* ContentView.swift */,
+				17DB16FD2A64C36000397095 /* OnboardingView.swift */,
+				17DB16FF2A64C36C00397095 /* HomeView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17DB16FE2A64C36000397095 /* OnboardingView.swift in Sources */,
+				17DB17002A64C36C00397095 /* HomeView.swift in Sources */,
 				17EFBE062A62F6A70065A476 /* ContentView.swift in Sources */,
 				17EFBE042A62F6A70065A476 /* RestartAppApp.swift in Sources */,
 			);
