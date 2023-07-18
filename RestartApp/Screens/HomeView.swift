@@ -12,8 +12,32 @@ struct HomeView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("home")
-                .font(.largeTitle)
+            // MARK: HEADER
+            
+            Spacer()
+            
+            ZStack {
+                CircleGroupView(ShapeColor: .gray, ShapeOpacity: 0.1)
+                
+                Image("character-2")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+            }
+            
+            // MARK: CENTER
+            
+            Text("The tieme that leads to mastery is depend on the intensity of our focus.")
+                .font(.title3)
+                .fontWeight(.light)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding( )
+            
+            // MARK: FOOTER
+            
+            Spacer()
+            
             Button {
                 isOnboardingViewActive = true
             } label: {

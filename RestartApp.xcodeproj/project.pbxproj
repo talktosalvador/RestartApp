@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17B0E1C32A66DD1800B1E359 /* CircleGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0E1C22A66DD1800B1E359 /* CircleGroupView.swift */; };
 		17DB16FE2A64C36000397095 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DB16FD2A64C36000397095 /* OnboardingView.swift */; };
 		17DB17002A64C36C00397095 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DB16FF2A64C36C00397095 /* HomeView.swift */; };
 		17EFBE042A62F6A70065A476 /* RestartAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EFBE032A62F6A70065A476 /* RestartAppApp.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17B0E1C22A66DD1800B1E359 /* CircleGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGroupView.swift; sourceTree = "<group>"; };
 		17DB16FC2A64C0D200397095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		17DB16FD2A64C36000397095 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		17DB16FF2A64C36C00397095 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		17EFBE222A62FC840065A476 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				17B0E1C22A66DD1800B1E359 /* CircleGroupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17B0E1C32A66DD1800B1E359 /* CircleGroupView.swift in Sources */,
 				17DB16FE2A64C36000397095 /* OnboardingView.swift in Sources */,
 				17DB17002A64C36C00397095 /* HomeView.swift in Sources */,
 				17EFBE062A62F6A70065A476 /* ContentView.swift in Sources */,
