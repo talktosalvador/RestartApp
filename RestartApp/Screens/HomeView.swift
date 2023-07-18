@@ -41,8 +41,16 @@ struct HomeView: View {
             Button {
                 isOnboardingViewActive = true
             } label: {
+                Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                    .imageScale(.large)
+                
                 Text("Restart")
+                    .font(.system(.title3, design: .rounded))
+                    .fontWeight(.bold)
             }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            .controlSize(.large)
         }
     }
 }
