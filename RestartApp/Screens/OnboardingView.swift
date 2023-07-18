@@ -8,7 +8,31 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    // MARK: PROPERTY
+
+    let draggableCircleSize = 80.0
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
+    @State private var buttonOffset: CGFloat = 0
+    
+    var drag: some Gesture {
+        DragGesture()
+            .onChanged { gesture in
+                if gesture.translation.width > 0 && buttonOffset <= buttonWidth - 80 {
+                    buttonOffset = gesture.translation.width
+                }
+            }
+            .onEnded { _ in
+                if buttonOffset > buttonWidth / 2 {
+                    buttonOffset = buttonWidth - 80
+                    isOnboardingViewActive = false
+                } else {
+                    buttonOffset = 0
+                }
+            }
+    }
+
+    // MARK: BODY
 
     var body: some View {
         ZStack {
@@ -16,8 +40,8 @@ struct OnboardingView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                // MARK: - HEADER
-                
+                // MARK: HEADER
+
                 Spacer()
                 
                 VStack(spacing: 0) {
@@ -37,8 +61,8 @@ struct OnboardingView: View {
                     .padding(.horizontal, 10)
                 } //: HEADER
                 
-                // MARK: - CENTER
-                
+                // MARK: CENTER
+
                 ZStack {
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
                     
@@ -49,8 +73,8 @@ struct OnboardingView: View {
                 
                 Spacer()
                 
-                // MARK: - FOOTER
-                
+                // MARK: FOOTER
+
                 ZStack {
                     // PARTS OF THE CUSTOM BUTTON
                     
@@ -94,16 +118,14 @@ struct OnboardingView: View {
                                 .font(.system(size: 24, weight: .bold))
                         }
                         .foregroundColor(.white)
-                        .frame(width: 80, height: 80, alignment: .center)
-                        .onTapGesture {
-                             isOnboardingViewActive = false
-                        }
+                        .frame(width: draggableCircleSize, height: draggableCircleSize, alignment: .center)
+                        .offset(x: buttonOffset)
+                        .gesture(drag)
                         
                         Spacer()
                     } //: HSTACK
-                    
                 } //: FOOTER
-                .frame(height: 80, alignment: .center)
+                .frame(width: buttonWidth, height: 80, alignment: .center)
                 .padding()
             } //: ZSTACK
         } //: VSTACK
