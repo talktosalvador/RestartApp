@@ -12,6 +12,7 @@ struct CircleGroupView: View {
 
     @State var ShapeColor: Color
     @State var ShapeOpacity: Double
+    @State var isAnimating: Bool = false
 
     // MARK: - BODY
 
@@ -25,6 +26,13 @@ struct CircleGroupView: View {
         } //: ZSTACK
         .frame(maxWidth: 500)
         .padding(80)
+        .blur(radius: isAnimating ? 0 : 10)
+        .opacity(isAnimating ? 1 : 0)
+        .scaleEffect(isAnimating ? 1 : 0.5)
+        .animation(.easeOut(duration: 1), value: isAnimating)
+        .onAppear(perform: {
+            isAnimating = true
+        })
     }
 }
 
