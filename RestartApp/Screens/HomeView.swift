@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @State private var isAnimating: Bool = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -32,7 +33,7 @@ struct HomeView: View {
                 .fontWeight(.light)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding( )
+                .padding()
             
             // MARK: FOOTER
             
@@ -52,6 +53,11 @@ struct HomeView: View {
             .buttonBorderShape(.capsule)
             .controlSize(.large)
         }
+        .opacity(isAnimating ? 1 : 0)
+        .animation(.easeOut(duration: 1), value: isAnimating)
+        .onAppear(perform: {
+            isAnimating = true
+        })
     }
 }
 
