@@ -24,13 +24,11 @@ struct OnboardingView: View {
                 }
             }
             .onEnded { _ in
-                withAnimation(.easeOut(duration: 0.4)) {
-                    if buttonOffset > buttonWidth / 2 {
-                        buttonOffset = buttonWidth - 80
-                        isOnboardingViewActive = false
-                    } else {
-                        buttonOffset = 0
-                    }
+                if buttonOffset > buttonWidth / 2 {
+                    buttonOffset = buttonWidth - 80
+                    isOnboardingViewActive = false
+                } else {
+                    buttonOffset = 0
                 }
             }
     }
@@ -140,9 +138,9 @@ struct OnboardingView: View {
                 .animation(.easeOut(duration: 1), value: isAnimating)
             } //: VSTACK
         } //: ZSTACK
-        .onAppear {
+        .onAppear(perform: {
             isAnimating = true
-        }
+        })
     }
 }
 
