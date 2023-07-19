@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var isAnimating: Bool = false
+    @State private var isAnimatingImage: Bool = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -24,11 +25,16 @@ struct HomeView: View {
                     .resizable()
                     .scaledToFit()
                     .padding()
+                    .offset(y: isAnimatingImage ? 35 : -35)
+                    .animation(
+                        .easeInOut(duration: 4).repeatForever(),
+                        value: isAnimatingImage
+                    )
             }
             
             // MARK: CENTER
             
-            Text("The tieme that leads to mastery is depend on the intensity of our focus.")
+            Text("The time that leads to mastery is depend on the intensity of our focus.")
                 .font(.title3)
                 .fontWeight(.light)
                 .foregroundColor(.secondary)
@@ -52,12 +58,15 @@ struct HomeView: View {
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
-        }
+        } //: VSTACK
         .opacity(isAnimating ? 1 : 0)
         .animation(.easeOut(duration: 1), value: isAnimating)
-        .onAppear(perform: {
+        .onAppear {
             isAnimating = true
-        })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                isAnimatingImage = true
+            }
+        }
     }
 }
 
