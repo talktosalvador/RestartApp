@@ -14,6 +14,7 @@ struct OnboardingView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset: CGFloat = 0
+    @State private var isAnimating: Bool = false
     
     var drag: some Gesture {
         DragGesture()
@@ -41,7 +42,7 @@ struct OnboardingView: View {
             
             VStack(spacing: 20) {
                 // MARK: HEADER
-
+                
                 Spacer()
                 
                 VStack(spacing: 0) {
@@ -60,9 +61,12 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 10)
                 } //: HEADER
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : -40)
+                .animation(.easeOut(duration: 1), value: isAnimating)
                 
                 // MARK: CENTER
-
+                
                 ZStack {
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
                     
@@ -74,7 +78,7 @@ struct OnboardingView: View {
                 Spacer()
                 
                 // MARK: FOOTER
-
+                
                 ZStack {
                     // PARTS OF THE CUSTOM BUTTON
                     
@@ -82,7 +86,7 @@ struct OnboardingView: View {
                     
                     Capsule()
                         .fill(Color.white.opacity(0.2))
-                        
+                    
                     Capsule()
                         .fill(Color.white.opacity(0.2))
                         .padding(8)
@@ -127,8 +131,11 @@ struct OnboardingView: View {
                 } //: FOOTER
                 .frame(width: buttonWidth, height: 80, alignment: .center)
                 .padding()
-            } //: ZSTACK
-        } //: VSTACK
+            } //: VSTACK
+        } //: ZSTACK
+        .onAppear {
+            isAnimating = true
+        }
     }
 }
 
