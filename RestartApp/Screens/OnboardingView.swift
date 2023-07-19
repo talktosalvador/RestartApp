@@ -24,11 +24,13 @@ struct OnboardingView: View {
                 }
             }
             .onEnded { _ in
-                if buttonOffset > buttonWidth / 2 {
-                    buttonOffset = buttonWidth - 80
-                    isOnboardingViewActive = false
-                } else {
-                    buttonOffset = 0
+                withAnimation {
+                    if buttonOffset > buttonWidth / 2 {
+                        buttonOffset = buttonWidth - 80
+                        isOnboardingViewActive = false
+                    } else {
+                        buttonOffset = 0
+                    }
                 }
             }
     }
