@@ -41,8 +41,8 @@ struct OnboardingView: View {
         DragGesture()
             .onChanged { gesture in
                 if abs(imageOffset.width) <= translationLimit {
-                    imageOffset = gesture.translation
-                    withAnimation(.linear(duration: 0.25)) {
+                    withAnimation {
+                        imageOffset = gesture.translation
                         arrowsOpacity = 0
                     }
                 }
@@ -50,8 +50,6 @@ struct OnboardingView: View {
             .onEnded { _ in
                 withAnimation {
                     imageOffset = .zero
-                }
-                withAnimation(.linear(duration: 0.25)) {
                     arrowsOpacity = 0.5
                 }
             }
@@ -70,7 +68,7 @@ struct OnboardingView: View {
                 Spacer()
                 
                 VStack(spacing: 0) {
-                    Text("Share")
+                    Text(imageOffset == .zero ? "Share" : "Give")
                         .font(.system(size: 60))
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
