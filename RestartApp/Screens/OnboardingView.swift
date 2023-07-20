@@ -11,12 +11,12 @@ struct OnboardingView: View {
     // MARK: PROPERTY
 
     let draggableCircleSize = 80.0
+    let translationLimit = 150.0
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset: CGFloat = 0
     @State private var isAnimating: Bool = false
     @State private var imageOffset = CGSize.zero
-    @State private var isDragImage = false
     
     var drag: some Gesture {
         DragGesture()
@@ -38,15 +38,13 @@ struct OnboardingView: View {
     var imageDrag: some Gesture {
         DragGesture()
             .onChanged { gesture in
-                if abs(imageOffset.width) <= 150 {
+                if abs(imageOffset.width) <= translationLimit {
                     imageOffset = gesture.translation
-                    isDragImage = true
                 }
             }
             .onEnded { _ in
                 withAnimation {
                     imageOffset = .zero
-                    isDragImage = false
                 }
             }
     }
@@ -87,8 +85,8 @@ struct OnboardingView: View {
                 
                 ZStack {
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
-                        .offset(x: isDragImage ? imageOffset.width * -1.5 : imageOffset.width * -0.1)
-                        .blur(radius: isDragImage ? 10 : 0)
+                        .offset(x: -imageOffset.width)
+                        .blur(radius:  abs(imageOffset.width) * 0.1)
                     
                     Image("character-1")
                         .resizable()
@@ -96,10 +94,10 @@ struct OnboardingView: View {
                         .opacity(isAnimating ? 1 : 0)
                         .animation(.easeOut(duration: 0.5), value: isAnimating)
                         .offset(x: imageOffset.width * 1.2, y: abs(imageOffset.width) * 0.1)
-                        .rotationEffect(.degrees(Double(imageOffset.width / 20)))
+                        .rotationEffect(.degrees(Double(imageOffset.width * 0.1)))
                         .gesture(imageDrag)
                 } //: CENTER
-                .animation(.easeOut(duration: 1), value: imageOffset)
+                .animation(.spring(response: 1, dampingFraction: 0.5), value: imageOffset)
                 
                 Spacer()
                 
