@@ -18,12 +18,16 @@ struct OnboardingView: View {
     @State private var buttonOffset: CGFloat = 0
     @State private var isAnimating: Bool = false
     @State private var imageOffset = CGSize.zero
+    @State private var arrowsOpacity = 0.0
     
     var drag: some Gesture {
         DragGesture()
             .onChanged { gesture in
                 if gesture.translation.width > 0 && buttonOffset <= buttonWidth - 80 {
                     buttonOffset = gesture.translation.width
+                    withAnimation(.linear(duration: 0.25)) {
+                        arrowsOpacity = 0
+                    }
                 }
             }
             .onEnded { _ in
@@ -32,6 +36,9 @@ struct OnboardingView: View {
                     isOnboardingViewActive = false
                 } else {
                     buttonOffset = 0
+                    withAnimation(.linear(duration: 0.25)) {
+                        arrowsOpacity = 1
+                    }
                 }
             }
     }
@@ -87,7 +94,7 @@ struct OnboardingView: View {
                 ZStack {
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2, lineWidth: circleWidth)
                         .offset(x: -imageOffset.width)
-                        .blur(radius:  abs(imageOffset.width) * 0.1)
+                        .blur(radius: abs(imageOffset.width) * 0.1)
                     
                     Image("character-1")
                         .resizable()
@@ -99,6 +106,21 @@ struct OnboardingView: View {
                         .gesture(imageDrag)
                 } //: CENTER
                 .animation(.spring(response: 1, dampingFraction: 0.5), value: imageOffset)
+                .overlay(alignment: .center) {
+                    HStack {
+                        Image(systemName: "arrow.left")
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                    }
+                    .padding()
+                    .font(.largeTitle)
+                    .fontWeight(.thin)
+                    .foregroundColor(.white)
+//                    .opacity(0.5 - abs(imageOffset.width) / translationLimit * 0.5)
+                    .opacity(arrowsOpacity)
+                    .opacity(isAnimating ? 1 : 0)
+                    .animation(.easeOut(duration: 1).delay(2), value: isAnimating)
+                }
                 
                 Spacer()
                 
