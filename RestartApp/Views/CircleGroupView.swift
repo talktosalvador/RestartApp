@@ -12,6 +12,7 @@ struct CircleGroupView: View {
 
     @State var ShapeColor: Color
     @State var ShapeOpacity: Double
+    @State var lineWidth: Double
     @State var isAnimating: Bool = false
 
     // MARK: - BODY
@@ -19,10 +20,10 @@ struct CircleGroupView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(ShapeColor.opacity(ShapeOpacity), lineWidth: 40)
+                .stroke(ShapeColor.opacity(ShapeOpacity), lineWidth: lineWidth)
 
             Circle()
-                .stroke(ShapeColor.opacity(ShapeOpacity), lineWidth: 80)
+                .stroke(ShapeColor.opacity(ShapeOpacity), lineWidth: lineWidth * 2)
         } //: ZSTACK
         .frame(maxWidth: 500)
         .padding(80)
@@ -41,7 +42,7 @@ struct CircleGroupView_Previews: PreviewProvider {
         ZStack {
             Color("ColorBlue")
                 .ignoresSafeArea()
-            CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
+            CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2, lineWidth: 40)
         }
     }
 }

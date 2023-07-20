@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @State private var circleWidth: Double = UIScreen.main.bounds.width * 0.1
     @State private var isAnimating: Bool = false
     @State private var isAnimatingImage: Bool = false
 
@@ -19,7 +20,7 @@ struct HomeView: View {
             Spacer()
             
             ZStack {
-                CircleGroupView(ShapeColor: .gray, ShapeOpacity: 0.1)
+                CircleGroupView(ShapeColor: .gray, ShapeOpacity: 0.1, lineWidth: circleWidth)
                 
                 Image("character-2")
                     .resizable()

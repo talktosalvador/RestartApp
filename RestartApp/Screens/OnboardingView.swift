@@ -14,6 +14,7 @@ struct OnboardingView: View {
     let translationLimit = 150.0
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
+    @State private var circleWidth: Double = UIScreen.main.bounds.width * 0.1
     @State private var buttonOffset: CGFloat = 0
     @State private var isAnimating: Bool = false
     @State private var imageOffset = CGSize.zero
@@ -84,7 +85,7 @@ struct OnboardingView: View {
                 // MARK: CENTER
                 
                 ZStack {
-                    CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
+                    CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2, lineWidth: circleWidth)
                         .offset(x: -imageOffset.width)
                         .blur(radius:  abs(imageOffset.width) * 0.1)
                     
