@@ -31,6 +31,7 @@ struct OnboardingView: View {
                 if buttonOffset > buttonWidth / 2 {
                     buttonOffset = buttonWidth - 80
                     isOnboardingViewActive = false
+                    playSound(sound: "chimeup", type: "mp3")
                 } else {
                     buttonOffset = 0
                 }
