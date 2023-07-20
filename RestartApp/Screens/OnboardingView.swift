@@ -12,6 +12,7 @@ struct OnboardingView: View {
 
     let draggableCircleSize = 80.0
     let translationLimit = 150.0
+    let hapticFeedback = UINotificationFeedbackGenerator()
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var circleWidth: Double = UIScreen.main.bounds.width * 0.1
@@ -29,10 +30,12 @@ struct OnboardingView: View {
             }
             .onEnded { _ in
                 if buttonOffset > buttonWidth / 2 {
+                    hapticFeedback.notificationOccurred(.success)
                     buttonOffset = buttonWidth - 80
                     isOnboardingViewActive = false
                     playSound(sound: "chimeup", type: "mp3")
                 } else {
+                    hapticFeedback.notificationOccurred(.warning)
                     buttonOffset = 0
                 }
             }
