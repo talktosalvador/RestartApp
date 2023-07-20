@@ -18,16 +18,13 @@ struct OnboardingView: View {
     @State private var buttonOffset: CGFloat = 0
     @State private var isAnimating: Bool = false
     @State private var imageOffset = CGSize.zero
-    @State private var arrowsOpacity = 0.0
+    @State private var arrowsOpacity = 0.5
     
     var drag: some Gesture {
         DragGesture()
             .onChanged { gesture in
                 if gesture.translation.width > 0 && buttonOffset <= buttonWidth - 80 {
                     buttonOffset = gesture.translation.width
-                    withAnimation(.linear(duration: 0.25)) {
-                        arrowsOpacity = 0
-                    }
                 }
             }
             .onEnded { _ in
@@ -36,9 +33,6 @@ struct OnboardingView: View {
                     isOnboardingViewActive = false
                 } else {
                     buttonOffset = 0
-                    withAnimation(.linear(duration: 0.25)) {
-                        arrowsOpacity = 1
-                    }
                 }
             }
     }
@@ -48,11 +42,17 @@ struct OnboardingView: View {
             .onChanged { gesture in
                 if abs(imageOffset.width) <= translationLimit {
                     imageOffset = gesture.translation
+                    withAnimation(.linear(duration: 0.25)) {
+                        arrowsOpacity = 0
+                    }
                 }
             }
             .onEnded { _ in
                 withAnimation {
                     imageOffset = .zero
+                }
+                withAnimation(.linear(duration: 0.25)) {
+                    arrowsOpacity = 0.5
                 }
             }
     }
