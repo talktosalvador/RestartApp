@@ -87,6 +87,8 @@ struct OnboardingView: View {
                 
                 ZStack {
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
+                        .offset(x: isDragImage ? imageOffset.width * -1.5 : imageOffset.width * -0.1)
+                        .blur(radius: isDragImage ? 10 : 0)
                     
                     Image("character-1")
                         .resizable()
